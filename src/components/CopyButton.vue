@@ -8,7 +8,17 @@
       :alt="$t('general.copy')"
       class="icon"
       :src="require(`@/assets/icons/copy.png`)"
-      v-on:click="copy"
+      v-on:click="copy(data)"
+    /></button
+  ><button
+    class="copy-button hide--on-mobile"
+    :data-tooltip="$t('general.copyCommand')"
+  >
+    <img
+      :alt="$t('general.copyCommand')"
+      class="icon"
+      :src="require(`@/assets/icons/command.png`)"
+      v-on:click="copy(command)"
     />
   </button>
 </template>
@@ -16,16 +26,28 @@
 <script>
 export default {
   props: {
-    data: String
+    data: String,
+    command: String
   },
   methods: {
-    copy() {
-      let el = this.$refs.dataToCopy;
-      let range = document.createRange();
-      range.selectNode(el);
-      window.getSelection().addRange(range);
-      document.execCommand("copy");
-      window.getSelection().removeAllRanges();
+    copy(data) {
+      const input = document.createElement("input");
+      document.body.appendChild(input);
+      input.setAttribute("value", data);
+      input.select();
+      if (document.execCommand("copy")) {
+        document.execCommand("copy");
+        console.log("复制成功");
+      }
+      document.body.removeChild(input);
+
+      // let el = this.$refs.dataToCopy;
+      // let range = document.createRange();
+      // range.selectNode(el);
+      // window.getSelection().addRange(range);
+      // console.log(range, "fuck");
+      // document.execCommand("copy");
+      // window.getSelection().removeAllRanges();
     }
   }
 };

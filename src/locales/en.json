@@ -5,7 +5,8 @@
     "whatsapp": "WhatsApp",
     "vk": "vk",
     "worldwide": "Worldwide",
-    "all": "All"
+    "all": "All",
+    "copyCommand": "Copy Mac Command"
   },
   "navigation": {
     "home": "Home",
@@ -150,23 +151,11 @@
     }
   },
   "countries": {
-    "au": "Australia",
-    "bg": "Bulgaria",
-    "br": "Brazil",
-    "ca": "Canada",
     "cn": "China",
-    "de": "Germany",
     "es": "Spain",
     "fr": "France",
-    "hk": "Hong Kong",
-    "id": "Indonesia",
-    "nl": "Netherlands",
-    "pa": "Panama",
-    "ph": "Phillippines (the)",
-    "pl": "Poland",
     "ru": "Russian Federation (the)",
     "tw": "Taiwan",
-    "us": "United States of America",
-    "vn": "Vietnam"
+    "us": "United States of America"
   }
 }

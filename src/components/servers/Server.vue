@@ -2,7 +2,7 @@
   <span class="contents" v-if="status >= 0">
     <tr :class="trClasses">
       <td>
-        <CopyButton :data="fullAddress" />
+        <CopyButton :data="fullAddress" :command="runServeCommand" />
       </td>
       <td :data-tooltip="infos">
         <span v-if="data.active !== undefined && data.idle !== undefined">
@@ -109,6 +109,9 @@ export default {
   computed: {
     fullAddress() {
       return getFullAddress(this.server);
+    },
+    runServeCommand() {
+      return `sudo lan-play --relay-server-addr ${this.fullAddress}`;
     },
     infos() {
       let infos = "";
