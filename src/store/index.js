@@ -74,6 +74,15 @@ export default createStore({
   },
 
   actions: {
+    fetchServers({ commit }) {
+      return fetch("./static/server.json")
+        .then(res => {
+          return res.json();
+        })
+        .then(data => {
+          return commit("setServers", data);
+        });
+    },
     fetchMonitors({ commit }) {
       return fetch("https://api.uptimerobot.com/v2/getMonitors", {
         method: "POST",
@@ -95,6 +104,12 @@ export default createStore({
   },
 
   mutations: {
+    setServers(state, data) {
+      state.servers = data
+        .filter(falsyBy("hidden"))
+        .filter(filterBy("type", "rust"))
+        .map(serverMapping);
+    },
     setMonitors(state, data) {
       return (state.monitors = data);
     },

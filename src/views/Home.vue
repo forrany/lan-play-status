@@ -26,6 +26,9 @@ export default {
   components: {
     Servers,
     Communities
+  },
+  created() {
+    this.$store.dispatch("fetchServers");
   }
 };
 </script>

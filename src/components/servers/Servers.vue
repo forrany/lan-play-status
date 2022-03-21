@@ -36,13 +36,15 @@ export default {
   },
   data() {
     return {
-      servers: this.$store.state.servers,
       loadMore: false
     };
   },
   computed: {
     monitors() {
       return this.$store.state.monitors;
+    },
+    servers() {
+      return this.$store.state.servers;
     }
   },
   mounted() {
